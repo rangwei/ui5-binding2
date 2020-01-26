@@ -1,0 +1,72 @@
+<mvc:View controllerName="com.myorg.myUI5App2.controller.MainView" displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<VBox>
+						<Table growing="true" growingThreshold="10" id="authors" items="{
+						path: '/Authors',
+						parameters: {
+							$count: true,
+							$expand: { books: {}}
+						}
+					}" mode="SingleSelectMaster" selectionChange=".onAuthorSelectd">
+
+							<headerToolbar>
+								<Toolbar>
+									<Title id="authorstitle" text="{$count} Authors" titleStyle="H2"/>
+								</Toolbar>
+							</headerToolbar>
+
+							<columns>
+								<Column>
+									<Text text=" ID"/>
+								</Column>
+								<Column>
+									<Text text="name"/>
+								</Column>
+
+							</columns>
+							<ColumnListItem>
+								<Text text="{ID}"/>
+								<Text text="{name}"/>
+
+							</ColumnListItem>
+
+						</Table>
+
+
+						<Table id="SalesOrderItems" items="{books}">
+
+							<headerToolbar>
+								<Toolbar>
+									<Title id="books" text="Books" titleStyle="H2"/>
+								</Toolbar>
+							</headerToolbar>
+
+							<columns>
+								<Column>
+									<Text text=" ID"/>
+								</Column>
+								<Column>
+									<Text text="title"/>
+								</Column>
+								<Column>
+									<Text text="stock"/>
+								</Column>
+							</columns>
+							<ColumnListItem>
+								<Text text="{ID}"/>
+								<Text text="{title}"/>
+								<Text text="{stock}"/>
+							</ColumnListItem>
+						</Table>
+
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View> 
